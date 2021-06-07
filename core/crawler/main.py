@@ -5,7 +5,7 @@ import schedule
 import time
 
 MIN_PAGE = 0
-MAX_PAGE = 1
+MAX_PAGE = 99
 
 def requestAll():
     d2picList, d2picDetail = main.connect()
@@ -46,8 +46,9 @@ def start():
     print('end crawler: %d' % count)
 
 def scheduleJob():
-    #schedule.every(1).minutes.do(start)
-    schedule.every().day.at("12:00").do(job)
+    start()
+    schedule.every(10).minutes.do(start)
+    # schedule.every().day.at("12:00").do(start)
     while True:
         schedule.run_pending()
         time.sleep(60)

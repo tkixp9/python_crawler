@@ -1,7 +1,7 @@
 import pymongo
 
 def connect():
-    client = pymongo.MongoClient("localhost", 27017)
+    client = pymongo.MongoClient("localhost", 27017) # mongod --dbpath f:/start2021/dbdata
     d2pic = client['d2pic']
     return d2pic['list'], d2pic['detail']
 
