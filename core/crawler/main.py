@@ -1,5 +1,5 @@
-from crawler.parser import ListCrawler
-from crawler.parser import DetailCrawler
+from crawler.parser import ListCrawler, DetailCrawler
+from crawler.tools import getTimeString
 from mongodb import main
 import schedule
 import time
@@ -14,6 +14,7 @@ def requestAll():
     listCrawler = ListCrawler()
     detailCrawler = DetailCrawler()
     while True:
+        print('start page: %d' % page)
         try:
             items = listCrawler.start(page)
         except:
@@ -22,28 +23,37 @@ def requestAll():
             return count
         if main.findOne(d2picList, {'href': items[0]['href']}) or main.findOne(d2picList, {'href': items[-1]['href']}):
             return count
+        validateItems = []
         for item in items:
             href = item['href']
-            if main.findOne(d2picDetail, { 'href': item['href'] }):
+            if main.findOne(d2picDetail, { 'href': href }):
                 continue
             try:
-                detail = detailCrawler.start(href)
+                detail = detailCrawler.start(item['id'], href)
+                if not detail:
+                    continue
                 detail['href'] = href
+                detail['ctime'] = getTimeString()
                 detaiInsert = main.insertOne(d2picDetail, detail)
-                print('insert detail: %s' % detaiInsert)
+                # print('insert detail: %s' % detaiInsert)
+                item['ctime'] = detail['ctime']
+                validateItems.append(item)
             except:
                 continue
-        resInsert = main.insertArray(d2picList, items)
-        print('insert list len: %d' % len(resInsert.inserted_ids))
-        count += len(items)
+        # print(validateItems)
+        if len(validateItems) != 0:
+            resInsert = main.insertArray(d2picList, validateItems)
+            print('insert list len: %d' % len(resInsert.inserted_ids))
+            count += len(validateItems)
+        print('end page: %d width count: %d' % (page, count))
         page += 1
         if page == MAX_PAGE:
             return count
 
 def start():
-    print('start crawler')
+    print('start crawler at time: %s' % getTimeString())
     count = requestAll()
-    print('end crawler: %d' % count)
+    print('end crawler: %d at time: %s' % (count, getTimeString()))
 
 def scheduleJob():
     start()

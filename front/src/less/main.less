@@ -1,0 +1,150 @@
+@import "./variable";
+
+#category-page {
+  background: @gray-color-white;
+}
+.top-container {
+  background: @red-color;
+  height: 3.48rem;
+}
+.logout-icon {
+  float: right;
+  margin: .28rem;
+}
+.category-phone {
+  color: @white-color;
+  font-size: .48rem;
+  padding: 1.6rem 0 .1rem .28rem;
+}
+.category-tag {
+  display: none;
+  color: #f9bd6e;
+  background: @black-color;
+  text-align: center;
+  font-size: .24rem;
+  height: .48rem;
+  line-height: .48rem;
+  width: 1.6rem;
+  border-radius: .24rem;
+  margin-left: .28rem;
+}
+.category-item-c {
+  white-space: nowrap;
+  font-size: 0;
+}
+.category-item {
+  width: 25%;
+  text-align: center;
+  display: inline-block;
+  font-size: .26rem;
+  .icon {
+    width: .66rem;
+    margin: 0 auto .1rem;
+  }
+}
+
+.develop-container {
+  text-align: center;
+  font-size: .32rem;
+  padding-top: 3rem;
+  color: @gray-color;
+  img {
+    margin: 0 auto .5rem auto;
+    width: 1.6rem;
+  }
+}
+
+#category-invite-page {
+  background: @gray-color-white;
+  padding-top: .28rem;
+  font-size: 0;
+  .page-card:first-child {
+    margin-top: 0;
+  }
+}
+.invite-item-c {
+  font-size: .28rem;
+  width: 3.19rem;
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  .invite-link {
+    word-break: break-all;
+    margin: .28rem .14rem .28rem 0;
+    height: 3.05rem;
+    overflow: hidden;
+    color: @gray-color;
+    .link-content {
+      margin-top: 50%;
+      -webkit-transform: translateY(-50%);
+      transform: translateY(-50%);
+    }
+  }
+  .invite-qrcode {
+    padding: 0;
+    width: 3.05rem;
+    margin: .28rem 0 .28rem .14rem;
+    box-shadow: 0 0 6px 2px rgba(0, 0, 0, .2);
+  }
+  .invite-btn {
+    color: @gray-color;
+    text-align: center;
+  }
+
+  .poster-img {
+    padding: 0;
+    width: 3.05rem;
+    margin: .28rem .14rem .28rem 0;
+  }
+  &:last-child {
+    .poster-img {
+      margin-left: .14rem;
+      margin-right: 0;
+    }
+  }
+}
+.invite-qrcode-c {
+  overflow: visible;
+}
+
+#category-team-page {
+  background: @gray-color-white;
+  padding-top: .28rem;
+  .page-card {
+    margin-top: 0;
+    padding-bottom: 0;
+  }
+}
+.member-item-c {
+  border-bottom: 1px solid @gray-color-light;
+  margin-bottom: .28rem;
+  .member-summary {
+    color: @gray-color;
+    font-size: .28rem;
+    padding: .2rem 0 .28rem;
+  }
+  .copy-number {
+    color: @red-color;
+    margin-left: .2rem;
+    font-size: .28rem;
+  }
+}
+.member-item-c:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.empty-team {
+  text-align: center;
+  font-size: .32rem;
+  padding-top: 2.4rem;
+  color: @gray-color;
+  .btn-normal {
+    width: 6.3rem;
+  }
+  img {
+    margin: 0 auto 1rem auto;
+    width: 3rem;
+  }
+}
+

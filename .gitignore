@@ -31,3 +31,6 @@ package-lock.json
 *.rar
 
 /venv/
+
+/front/node_modules/
+/front/dist/
